@@ -1,0 +1,20 @@
+.list {
+    display: flex;
+    width: 100%;
+    
+  }
+  .intro{
+    padding-left:20px;
+    // padding-top:20px;
+    height:8vh;
+    flex: 1;
+    -webkit-box-shadow: 2px 4px 6px 1px rgba(0, 0, 0, 0.47);
+    box-shadow: 2px 4px 6px 1px rgba(201, 201, 201, 0.47);
+    position: relative;
+  }
+  .input1{
+      border-top: transparent !important;
+      border-left: none !important;
+      border-right: none !important;
+     border-bottom: 1px solid green !important;
+  }

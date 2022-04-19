@@ -1,0 +1,109 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing:border-box;
+}
+
+.signUpDiv {
+  /* background-image: url(../../assets/images/bg/dots2-dark.png); */
+  background-color:black;
+}
+.registerBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+.card {
+  min-width: 40%;
+ min-height:40vh;
+}
+.cardReg {
+  background-color: #1a2226;
+}
+
+.form1 {
+  height: 130vh;
+  width: 40%;
+  background-color: #1a2226;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.landing{
+  background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5) ), url('./images/money.jpg');
+  position: relative;
+  background-size: cover !important;
+  background-position:left !important;
+  background-repeat: no-repeat;
+ height:100vh;
+  width:100%;
+  font-family:"Cursive"
+ 
+}
+.bg{
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8) ), url('./images/money.jpg');
+  position: relative;
+  background-size: cover !important;
+  background-position:left  !important;
+  height:100vh;
+  width:100%;
+}
+.bg2{
+  background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5) ), url('./images/bg1.jpg');
+  position: relative;
+
+ 
+}
+.box {
+  background: #a6cf83;
+  float:left;
+  color:#333;
+  font-weight:bold;
+  padding:8px;
+}
+
+.box:after {
+  content: url('./images/bg1.jpg');
+}
+.input1{
+  border: 2px solid green !important;
+  background-color: white;
+}
+.label{
+  font-weight:bold;
+  color:black !important;
+}
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .landing{
+    height:200vh;
+    width:150%;
+    padding-left:-15;
+  }
+
+}
+
+Small devices (portrait tablets and large phones, 600px and up)
+/* @media only screen and (min-width: 800px) {
+  .bg{
+    height:400vh !important;
+  }
+} */
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+/* @media only screen and (min-width: 992px) {...} */
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+/* @media only screen and (min-width: 1200px) {...} */
+
+@media screen and (max-width: 768px) {
+  /* mobile devices */
+  .form1 {
+    width: 100%;
+  }
+  
+}
