@@ -1,8 +1,9 @@
+require('dotenv').config()
 const express = require('express');
 const cors = require('cors');
 // const notFound = require('./middleware/notFound')
 // const errorHandler = require('./middleware/errorhandler')
-require('dotenv').config()
+
 require('express-async-errors')
 
 const app = express();
