@@ -40,7 +40,7 @@ app.use(errorHandlerMiddleware);
 //     console.log(`Server is listening on port ${port}.......`);
 //  })
 
-const port = process.env.PORT || 5000 
+const port = process.env.PORT || 8080
 
 const start = async()=>{
     try{
