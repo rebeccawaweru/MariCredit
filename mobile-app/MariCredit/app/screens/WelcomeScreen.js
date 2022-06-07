@@ -1,9 +1,5 @@
 import React from 'react';
 import { ImageBackground, StyleSheet,View,Text, TouchableHighlight} from 'react-native';
-import {
-    useFonts,
-    Pacifico_400Regular
-  } from "@expo-google-fonts/dev";
   
 function WelcomeScreen({navigation}) {
     return (

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {View,StyleSheet,Dimensions,Text,TextInput,Picker, KeyboardAvoidingView,Platform} from 'react-native'
+import {View,StyleSheet,Dimensions,Text,TextInput,Picker, KeyboardAvoidingView,Platform,Alert} from 'react-native'
 import FormContainer from './FormContainer';
 import FormInput from './FormInput';
 import FormSubmitButton from './FormSubmitButton';
@@ -12,7 +12,6 @@ useEffect(()=>{
     client.get("/products")
        .then((response)=>{
            setProducts(response.data.products)
-            console.log(response.data.products)
        })
      .catch((error)=>{
          console.log(error)
@@ -39,7 +38,6 @@ const handleSubmit = async ()=>{
     const res = await client.get('/products/interest/'+product)
     var rate = res.data.product.interest
     const response = await client.get('/auth/'+id) 
-
     if(period === "months"){
        var interest =  amount *rate/100 *tenature/12;
     }else if(period === "weeks"){
@@ -49,16 +47,10 @@ const handleSubmit = async ()=>{
     }else{
         var interest =  amount *rate/100 *tenature;
     }
-    console.log(interest);
-  
+    // console.log(interest);
     const phonenumber = response.data.user.phonenumber
     const fullname = response.data.user.fullname
     const finalAmount = interest + parseInt(amount)
-    console.log(phonenumber)
-    console.log(fullname)
-    console.log(rate)
-    console.log(interest.toFixed(1));
-    console.log(finalAmount.toFixed(1));
     const loanresponse = await client.post('/loans', {
          fullname:fullname,
          phonenumber:phonenumber,
@@ -75,7 +67,12 @@ const handleSubmit = async ()=>{
          emergency2:loan.emergency2
     })
     console.log(loanresponse.data.loan)
-    
+    if(res.data.frontavatar == "" || res.data.backavatar == "" ){
+        navigation.navigate('IdScreen')
+    }else{
+        
+        navigation.navigate('Dashboard')
+    }
    } catch (error) {
        console.log(error.message)
    }
@@ -83,9 +80,9 @@ const handleSubmit = async ()=>{
 }
 return(
     <>
-<View style={{flex:1 , backgroundColor:"#8fbc8f", padding:10}}>
+<View style={{flex:1 , backgroundColor:"#fff", padding:10}}>
 <ScrollView>
-      <Text style={{paddingTop:50}}>Fill in the required information.</Text>
+      <Text style={{paddingTop:30}}>Fill in the required information.</Text>
       <Text style={{fontWeight:"bold", paddingTop:5}}>Choose loan product</Text>
       <View style={styles.container}>
       <Picker
@@ -140,7 +137,6 @@ onChangeText={value => handleOnChangeText(value,'emergency1')}/>
 label='Emergency 2'
 value={emergency2}
 onChangeText={value => handleOnChangeText(value,'emergency2')}/>
-
 <FormSubmitButton title='Submit' onPress={handleSubmit} />
 </ScrollView>
 </View>

@@ -14,7 +14,7 @@ phonenumber:Yup.string().matches(regx,'Invalid phonenumber').required('Phone num
 password:Yup.string().trim().min(6,'password must have 6 or more characters').required('Password is required'),
 confirmPassword:Yup.string().equals([Yup.ref('password'),null],'Passwords do not match!')
 })
-const SignupForm = ()=> {
+const SignupForm = ({navigation})=> {
   const userInfo = {
     fullname:'',
     email:'',
@@ -29,7 +29,7 @@ const signUp = async(values,formikActions)=>{
         ...values,
     })
     if(res.data.success){
-     console.log('hey')
+      navigation.navigate('Dashboard');
     }
   } catch (error) {
     console.log(error)

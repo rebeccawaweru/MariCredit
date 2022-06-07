@@ -13,7 +13,7 @@ import FormHeader from '../components/FormHeader';
 import FormSelectorButton from '../components/FormSelectorButton';
 import LoginForm from '../components/LoginForm';
 import SignupForm from '../components/SignupForm';
-import axios from 'axios'
+import client from '../api/client'
 
 const {width} = Dimensions.get('window')
 function LoginScreen({navigation}) {
@@ -22,7 +22,7 @@ function LoginScreen({navigation}) {
 
     const fetchApi=async()=>{
         try {
-        const res = await axios.get("http://localhost:5000/maricredit/auth")
+        const res = await client.get("/auth")
         console.log(res.data)   
         } catch (error) {
            console.log(error) 

@@ -1,3 +1,3 @@
 import axios from 'axios'
 
-export default axios.create({baseURL:'http://192.168.100.98:5000/maricredit'})
+export default axios.create({baseURL:"https://maricredit.herokuapp.com/maricredit"})

@@ -6,6 +6,7 @@ import client from '../api/client';
 const ImageUpload = ()=> {
     const user = localStorage.getItem('id')
     const [profileImage, setProfileImage] = useState('')
+     const [img, setImg] = useState('');
 
     const openImageLibrary = async ()=>{
         const {status} = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -26,23 +27,29 @@ const ImageUpload = ()=> {
         }
     }
     const uploadProfileImage = async ()=>{
-
          const formData = new FormData()
-         formData.append('profile', {
-            name: new Date() + '_profile',
-            uri: profileImage,
-            type: 'image/jpg',
-          });  
+         const data = new FormData()
+         data.append("file", profileImage)
+         data.append("upload_preset", "Images");
+         const res = await fetch(
+           "https://api.cloudinary.com/v1_1/marite/image/upload",
+           {
+             method:"POST",
+             body:data
+           }
+         )
+         const File = await res.json()
+         setImg(File.url)
+         console.log(File.secure_url)
+
          try {
-             const res = await client.post(`/auth/upload/${user}`, formData,{
-                headers:{
-                    'Content-Type':'multipart/form-data',
-                }
+             const res = await client.put(`/auth/${user}`,{
+                  avatar:File.secure_url
             })
             console.log(res.data)
           
          } catch (error) {
-             console.log(error)
+             console.log(error.message)
          }
        
     

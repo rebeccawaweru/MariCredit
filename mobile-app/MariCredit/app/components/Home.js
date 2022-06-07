@@ -1,25 +1,34 @@
 import React from 'react';
 import {View,Text,ImageBackground,TouchableOpacity,StyleSheet} from 'react-native'
 
-export default function Home(){
+export default function Home({navigation}){
+    const handleApply = () =>{
+        navigation.navigate('ApplyLoan')
+    }
+    const handleMyloans = () =>{
+        navigation.navigate('MyLoans')
+    }
+    const makePayment = () =>{
+        navigation.navigate('Payment')
+    }
     return (
         <>
     <ImageBackground
     style={styles.background}
     source={require('../assets/bg1.jpg')}>
          <View style={{flexDirection:"row"}}>
-             <TouchableOpacity style={styles.btn}>
+             <TouchableOpacity style={styles.btn} onPress={handleApply}>
                  <Text style={styles.title}>Apply for a loan</Text>
              </TouchableOpacity>
-             <TouchableOpacity style={[styles.btn, {marginLeft:20}]}>
+             <TouchableOpacity style={[styles.btn, {marginLeft:20}]} onPress={handleMyloans}>
                  <Text style={styles.title}>My Loans</Text>
              </TouchableOpacity>
          </View>
          <View style={{flexDirection:"row"}}>
-         <TouchableOpacity style={styles.btn}>
+         <TouchableOpacity style={styles.btn} onPress={makePayment}>
                  <Text style={styles.title}>Make Payment</Text>
              </TouchableOpacity>
-             <TouchableOpacity style={[styles.btn, {marginLeft:20}]}>
+             <TouchableOpacity style={[styles.btn, {marginLeft:20}]} >
                  <Text style={styles.title}>My Payments</Text>
              </TouchableOpacity>
          </View>

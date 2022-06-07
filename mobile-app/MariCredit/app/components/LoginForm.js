@@ -18,7 +18,6 @@ const userInfo = {
   password:''
 }
 const login = async(values,formikActions)=>{
-  navigation.navigate('ApplyLoan')
   try {
     const res = await client.post('/auth/login',{
        ...values
@@ -28,6 +27,7 @@ const login = async(values,formikActions)=>{
       var decode = jwt_decode(token)
       localStorage.setItem('id', decode.id)
       console.log(decode.id)
+      navigation.navigate('Dashboard');
     }
   } catch (error) {
     console.log(error.message)

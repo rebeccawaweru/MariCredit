@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
 
-const FormSubmitButton = ({ title, submitting, onPress }) => {
+const FormSubmitButton = ({ title, submitting, onPress,width }) => {
   const backgroundColor = submitting
     ? 'black'
     : 'green';
@@ -9,7 +9,7 @@ const FormSubmitButton = ({ title, submitting, onPress }) => {
   return (
     <TouchableOpacity
       onPress={!submitting ? onPress : null}
-      style={[styles.container, { backgroundColor }]}
+      style={[styles.container, { backgroundColor }, width={width}]}
     >
       <Text style={{ fontSize: 18, color: '#fff' }}>{title}</Text>
     </TouchableOpacity>

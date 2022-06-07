@@ -5,18 +5,25 @@ import Card from './Card'
  const MyLoans = ({navigation})=>{
      const user = localStorage.getItem('id')
      const [loandata,setLoandata] = useState([])
+     const [phone, setPhone] = useState('')
+     useEffect(()=>{
+      client.get('/auth/'+user)
+      .then((response)=>{
+       localStorage.setItem('phone',response.data.user.phonenumber)
+    })
+  },[])
     useEffect(()=>{
-        client.get("/loans/myloans/"+user)
+        client.get("/loans/userloans/"+localStorage.getItem('phone')+"/"+user)
         .then((response)=>{
           setLoandata(response.data.loan)
       })
     .catch((error)=>{
         console.log(error)
     });
-    })
+    },[])
     return(
         <ScrollView style={styles.container}>
-          <Text style={{fontWeight:"bold", textAlign:"center"}}>My Loans</Text>
+          
         {loandata.map((loan,key)=>{
           return(
             <Card key={key}>
@@ -41,7 +48,7 @@ const styles = StyleSheet.create({
         flex:1,
         padding:5,
         fontSize: 35,
-    
+        marginTop:20
 
     }, 
      item: {
